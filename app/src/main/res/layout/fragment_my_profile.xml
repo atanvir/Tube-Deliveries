@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProSemiboldTextView
+                android:id="@+id/tvProfileUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProSemiboldTextView
+                android:id="@+id/tvProfileUserName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Address"
+                android:textColor="@android:color/black"
+                android:textSize="17dp"
+                app:layout_constraintStart_toStartOf="@+id/clPhonePicker"
+                app:layout_constraintTop_toBottomOf="@+id/clPhonePicker" />
+
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvEmailMyProfile"
+                app:layout_constraintStart_toStartOf="@+id/tvEmailMyProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmailMyProfile" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/clPhonePicker"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/clPhonePicker"
+                app:layout_constraintTop_toBottomOf="@+id/clPhonePicker" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvAreaProfile"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvAreaProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvAreaProfile" />
+
+            <View
+                android:id="@+id/view10"
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHouseNo" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPincode" />
+
+            <View
+                android:id="@+id/view12"
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvLandMark"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvLandMark"
+                app:layout_constraintTop_toBottomOf="@+id/tvLandMark" />
+
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProSemiboldTextView
+                android:id="@+id/btnEditProfile"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/bg_white"
+                android:gravity="center"
+                android:text="@string/edit_profile"
+                android:textColor="@color/mahroom"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvLandMark"
+                app:layout_constraintStart_toStartOf="@+id/tvLandMark"
+                app:layout_constraintTop_toBottomOf="@+id/view12" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvEmailMyProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileUserName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmailMyProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_mail"
+                    android:enabled="false"
+                    android:hint="@string/email_id"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clPhonePicker"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvEmailMyProfile"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/tvEmailMyProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmailMyProfile">
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/countryCodePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:focusable="false"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.hbb20.CountryCodePicker>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:hintTextAppearance="@style/editColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/countryCodePicker"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_signup_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableRight="@drawable/ss_phone"
+                        android:drawablePadding="16dp"
+                        android:focusable="false"
+                        android:hint="@string/signup_phone_number"
+                        android:imeOptions="actionNext"
+                        android:inputType="text|number"
+                        android:maxLines="1"
+                        android:paddingTop="10dp"
+                        android:textSize="15dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvAreaProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/clPhonePicker"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvProfileUserName2"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileUserName2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAreaMyProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_location"
+                    android:enabled="false"
+                    android:hint="Area"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvAddressType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/tvAreaProfile"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvAreaProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvAreaProfile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edAddressType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/down_arrow"
+                    android:enabled="false"
+                    android:hint="Address Type"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddressType"
+                app:layout_constraintStart_toStartOf="@+id/tvAddressType"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddressType" />
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvStreet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddressType"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvAddressType"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddressType">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_location"
+                    android:enabled="false"
+                    android:hint="Street"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvStreet"
+                app:layout_constraintStart_toStartOf="@+id/tvStreet"
+                app:layout_constraintTop_toBottomOf="@+id/tvStreet" />
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvHouseNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/tvStreet"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvStreet"
+                app:layout_constraintTop_toBottomOf="@+id/tvStreet">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtBuilding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_location"
+                    android:enabled="false"
+                    android:hint="@string/building"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvHouseNo"
+                app:layout_constraintStart_toStartOf="@+id/tvHouseNo"
+                app:layout_constraintTop_toBottomOf="@+id/tvHouseNo" />
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvFloor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/tvHouseNo"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvHouseNo"
+                app:layout_constraintTop_toBottomOf="@+id/tvHouseNo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edFloor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_location"
+                    android:enabled="false"
+                    android:hint="@string/floor"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvFloor"
+                app:layout_constraintStart_toStartOf="@+id/tvFloor"
+                app:layout_constraintTop_toBottomOf="@+id/tvFloor" />
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvApartmentNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/tvFloor"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvFloor"
+                app:layout_constraintTop_toBottomOf="@+id/tvFloor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edApartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_location"
+                    android:enabled="false"
+                    android:hint="@string/apartment_no"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="@+id/tvApartmentNo"
+                app:layout_constraintStart_toStartOf="@+id/tvApartmentNo"
+                app:layout_constraintTop_toBottomOf="@+id/tvApartmentNo" />
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvLandMark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:hintEnabled="true"
+                app:hintTextAppearance="@style/editColor"
+                app:layout_constraintEnd_toEndOf="@+id/tvApartmentNo"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvApartmentNo"
+                app:layout_constraintTop_toBottomOf="@+id/tvApartmentNo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLandMark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@drawable/ss_location"
+                    android:enabled="false"
+                    android:hint="@string/landmark"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

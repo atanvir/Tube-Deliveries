@@ -1,0 +1,213 @@
+<resources>
+    <string name="app_name">Tube-Deliveries</string>
+<!--    <string name="google_map_api_key">AIzaSyBm6eN8n8A3tzhp-RYKwDZhHw3IfJ36BNA</string>-->
+
+<!--    <string name="google_map_api_key">AIzaSyAoN9-8KFd6TUF5z67TLW1j7ojcy_M8cOo</string>-->
+<!--    <string name="google_map_api_key">AIzaSyDLRsO_oOSnSc0pzp6MzZ0Hg7cByd7k8qo</string>-->
+    <string name="google_map_api_key">AIzaSyA9msMvJRL3Q59QKAMr8RlEFlyBQBpHH5g</string>
+    <!-- <string name="google_map_api_key">AIzaSyCkruleqM890srav5   Oz_5kUgnWZ2imVJDA</string>-->
+
+    <string name="home">Home</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="offers">My Offers</string>
+    <string name="just_bite_credit">Just Bite Credit</string>
+    <string name="payment">My Payment</string>
+    <string name="settings">Settings</string>
+    <string name="about_us">About Us</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="contact_us">Contact Us</string>
+    <string name="faq_s">FAQ\'s</string>
+    <string name="help">Help</string>
+    <string name="search">Search</string>
+    <string name="my_orders">My Orders</string>
+    <string name="my_profile">My Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="search_by_restaurants_dishes_cuisines">Search by Restaurants, Dishes, Cuisines</string>
+    <string name="expect_delivery_time">Expect Delivery Time</string>
+    <string name="delivery_person">Delivery Person</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="delivered">Delivered</string>
+    <string name="reorder">Reorder</string>
+    <string name="rate_order">Rate Order</string>
+    <string name="email_id">Email Id</string>
+    <string name="landmark">Landmark</string>
+    <string name="edit_profile">Edit Profile</string>
+
+    ////// login strings////////////////
+    <string name="proceed_with_your">Proceed with your</string>
+    <string name="Text_Login">Login</string>
+    <string name="Email_Id">Email Id/Phone</string>
+    <string name="Forgot_Password">Forgot Password?</string>
+    <string name="Button_Login">Login</string>
+    <string name="don_t_have_an_account_sign_up"><i>Don\'t have an account? </i> <font color="#EF3644">SIGN UP</font> </string>
+    <string name="or_sign_in_with">Or Sign in with</string>
+
+    //////////////////signup strings////////////
+
+    <string name="Sign_up_fname">First Name</string>
+    <string name="signup_last_name">Last Name</string>
+    <string name="signup_address">Address</string>
+    <string name="signup_phone_number">Phone Number</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_confirm_password">Confirm Password</string>
+    <string name="signup_sign_up">SIGN UP</string>
+    <string name="small_sign_up">Sign Up</string>
+
+
+    <string name="customized"><u>Customizable</u></string>
+
+    ------------------------------string value for fragmnet just bite
+    credit----------------------------------------------
+    <string name="credit_available_credits">Available Credits</string>
+    <string name="credit_view_statement">View Statement</string>
+
+
+    ---------------------------------------string value for setting
+    activity-----------------------------
+    <string name="setting_btn_save">Save</string>
+    <string name="setting_logout">Logout</string>
+    <string name="setting_notifications">Notifications</string>
+    <string name="setting_change_password">Change Password</string>
+    <string name="setting_current_password">Current Password</string>
+    <string name="setting_new_password">New Password</string>
+
+    <string name="tv_help_lorem_ispum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
+
+
+    ------------retraurant info
+    values---------------------------------------------------------------------------------------
+    <string name="restaurants_info">Restaurant Info</string>
+    <string name="working_hours">Working Hours</string>
+    <string name="_8_30am_9_30pm_today">8:30AM-9:30PM(Today)</string>
+    <string name="reviews">Reviews</string>
+    <string name="description">Description</string>
+    <string name="view_all">View All</string>
+    <string name="menu_item">Menu Item</string>
+    <string name="my_cart">My Cart</string>
+    <!--<string name="web_client_id">885815687007-el2a69qouhc5ija5nklrqc733s4bdhbn.apps.googleusercontent.com</string>-->
+<!--    <string name="web_client_id">700871046888-bsvvhfp6gjr3am3uanfouvg1v7gsafnv.apps.googleusercontent.com</string>-->
+<!--    <string name="web_client_id">700871046888-bsvvhfp6gjr3am3uanfouvg1v7gsafnv.apps.googleusercontent.com</string>-->
+<!--    <string name="web_client_id">412443536630-iqu9n35r69ob433oscf43lo2gm4dser3.apps.googleusercontent.com</string>-->
+    <string name="web_client_id">412443536630-iqu9n35r69ob433oscf43lo2gm4dser3.apps.googleusercontent.com</string>
+
+
+    ------------------------share reviews string
+    value-----------------------------------------------
+    <string name="review_heading_1"><![CDATA[Share Ratings & Reviews]]></string>
+    <string name="review_heading_2">Share Ratings as per your experience with the Restaurant food</string>
+    <string name="ed_review_write_here">Write here...</string>
+    <string name="share_reviews">Share Reviews</string>
+    <string name="payment_mode">Payment Mode</string>
+    <string name="credit_statement">Credit Statement</string>
+    <string name="top_up_offers">Top-up offers</string>
+    <string name="verification_act">Verification</string>
+
+
+    ----------------------forget password string
+    value----------------------------------------------------------------------------
+    <string name="fog_password_submit">Submit</string>
+    <string name="fog_password_statement">We need your registered email id to send password reset information.</string>
+    <string name="fog_password_email">Email Id</string>
+    <string name="forgot_password">Forgot Password</string>
+
+
+    ------------------------string values for dialog filter----------------
+    <string name="filter">Filter</string>
+    <string name="checkbox_non_vegeterian">Non-Vegetarian</string>
+    <string name="cancel">Cancel</string>
+    <string name="checkbox_vegeterian">Vegetarian</string>
+    <string name="price">Price</string>
+    <string name="btn_apply">Apply</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="tv_ratings">Ratings</string>
+    <string name="ratings_and_reviews"><![CDATA[Ratings & Reviews]]></string>
+    <string name="total_price_aed_20_00"> : AED 20.00</string>
+
+
+    //utility//
+    <string name="no_internet">No Internet Connection !!</string>
+    <string name="login_success">Login succesfull</string>
+
+
+    //credential//
+    <string name="facebook_app_id">999670117068627</string>
+    <string name="fb_login_protocol_scheme">fb999670117068627</string>
+    <string name="replace_dishes">Your cart contains dishes.\nDo you want to discard the selection and add new dishes</string>
+    <string name="order_id">Order Id : </string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="enter_valid_email">Enter valid email id</string>
+    <string name="enter_mobile">Enter mobile no</string>
+    <string name="enter_loacation">Enter location</string>
+    <string name="enter_valid_password">Enter valid password</string>
+    <string name="enter_passwor_match">Enter password and confirm password does\'t match</string>
+    <string name="remove_item">Remove Item</string>
+    <string name="aed">AED\u00A0</string>
+    <string name="repeat_order">Repeat last used customization ?</string>
+    <string name="customization">Customization</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="share_app">Share App</string>
+    <string name="customer_stories">Customer Stories</string>
+    <string name="usd">USD\u00A0</string>
+    <string name="building">Building</string>
+    <string name="floor">Floor</string>
+    <string name="apartment_no">Apartment No.</string>
+    <string name="my_favorities">My Favourites</string>
+    <string name="my_offers">My Offers</string>
+    <string name="my_payment">My Payment</string>
+    <string name="notifications">Notifications</string>
+    <string name="breakfast">BreakFast</string>
+    <string name="lunch">Lunch</string>
+
+    <string name="past">Past</string>
+    <string name="ongoing">Ongoing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="submit">Submit</string>
+    <string name="bill_details">Bill Details</string>
+    <string name="select_eat_option">Select Eat Option:</string>
+    <string name="home_delivery">Home Delivery</string>
+    <string name="pick_up">Pick Up</string>
+    <string name="eat_at_restaurant">Eat at Restaurant</string>
+    <string name="add_delivery_address">Add Delivery Address</string>
+    <string name="select_pick_up_date">Select Pick Up Date</string>
+    <string name="select_pick_time">Select Pick Up Time</string>
+    <string name="select_visiting_date">Select Visiting Date</string>
+    <string name="select_visiting_time">Select Visiting Time</string>
+    <string name="pick_up_date">Pick Up Date</string>
+    <string name="pick_up_time">Pick Up Time</string>
+    <string name="delievery_time"> Delivery Time</string>
+    <string name="agreed_to_term">Please mark as Argreed to Terms and Condition</string>
+    <string name="visiting_date">Visiting Date</string>
+    <string name="visiting_time">Visiting Time</string>
+    <string name="number_of_people">Number Of People</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="months_ago">months ago</string>
+    <string name="day_ago">day ago</string>
+    <string name="days_ago">days ago</string>
+    <string name="hour_ago">hour ago</string>
+    <string name="min_ago">min ago</string>
+    <string name="sec_ago">secs_ago</string>
+    <string name="non_veg">Non Veg</string>
+    <string name="veg">Veg</string>
+    <string name="sweet">Sweet</string>
+    <string name="salty">Salty</string>
+    <string name="mixed">Mixed</string>
+    <string name="taste">Taste:</string>
+    <string name="type">Type:</string>
+    <string name="eat_type">Eat Type:</string>
+    <string name="atleast_six_digit">Your password must be aleast of six digits</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="wallet_money">Add Wallet Money</string>
+    <string name="my_subcription">My Subcription</string>
+    <string name="current_plan_details">Current Plan Details</string>
+    <string name="filter_restaurant">Filter Restaurant</string>
+    <string name="select_food_by_restaurant">Select food by Restaurant</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="grocery">Grocery</string>
+    <string name="sound">Sound</string>
+    <string name="food">Food</string>
+    <string name="apply_filter">Apply Filter</string>
+
+
+</resources>

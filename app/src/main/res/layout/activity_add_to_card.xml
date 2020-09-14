@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.RestaurantDetailsEntity">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/tvAddToCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/ivRestroImage"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/food_thali"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                android:id="@+id/tvdistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivRestroImage"
+                app:layout_constraintStart_toStartOf="@+id/ivBackAddToCart" />
+
+            <ImageView
+                android:id="@+id/ivFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivRestroImage"
+                app:layout_constraintEnd_toEndOf="@+id/ivRestroImage" />
+
+            <ImageView
+                android:id="@+id/ivInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMinOrderAddToCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvMinOrderAddToCard"
+                app:srcCompat="@drawable/info" />
+
+
+            <ImageView
+                android:id="@+id/ivBackAddToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="25dp"
+                android:padding="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivRestroImage"
+                app:srcCompat="@drawable/back_button" />
+
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivRestroImage"
+                app:layout_constraintEnd_toEndOf="@+id/ivRestroImage"
+                app:layout_constraintStart_toStartOf="@+id/ivRestroImage"
+                app:layout_constraintTop_toTopOf="@+id/ivRestroImage" />
+
+
+            <RatingBar
+                android:id="@+id/ivRating"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvReview"
+                app:layout_constraintEnd_toStartOf="@+id/tvAvgRating"
+                app:layout_constraintTop_toTopOf="@+id/tvReview"
+                app:layout_constraintVertical_bias="0.444" />
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                android:id="@+id/tvAvgRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:textSize="12dp"
+                android:maxLength="4"
+                app:layout_constraintBottom_toBottomOf="@+id/tvReview"
+                app:layout_constraintEnd_toStartOf="@+id/tvReview"
+                app:layout_constraintTop_toTopOf="@+id/tvReview" />
+
+            <View
+                android:id="@+id/view13"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/light_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTimeAddToCard"
+                app:layout_constraintStart_toEndOf="@+id/tvTimeAddToCard"
+                app:layout_constraintTop_toTopOf="@+id/tvTimeAddToCard" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:background="@color/light_grey"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycerAddToCartHori" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dp"
+                android:background="@color/light_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorLightSky"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimeAddToCard">
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="left"
+                    app:constraint_referenced_ids="tvMenu,ivFilterAddToCart"
+                    tools:layout_editor_absoluteX="411dp" />
+
+                <ImageView
+                    android:id="@+id/ivSideMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivSearchAddToCart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivSearchAddToCart"
+                    app:srcCompat="@drawable/side_menu" />
+
+                <ImageView
+                    android:id="@+id/ivFilterAddToCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMenu"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvMenu"
+                    app:srcCompat="@drawable/filter_a" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/ivSearchAddToCart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivFilterAddToCart"
+                    app:layout_constraintStart_toEndOf="@+id/ivSideMenu"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/searching_icon" />
+
+                <com.TUBEDELIVERIES.Utility.SourceSansProSemiboldTextView
+                    android:id="@+id/tvMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:drawableLeft="@drawable/menu_list"
+                    android:drawablePadding="10dp"
+                    android:text="Menu"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycerAddToCartHori"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAddToCartVertically"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycerAddToCartHori"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                android:id="@+id/tvReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textSize="12sp"
+                android:text="(20000 review)"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRestroTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRestroTitle"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <LinearLayout
+                android:id="@+id/llCousine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvRestroTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvRestroTitle"
+                android:orientation="horizontal">
+
+
+
+            </LinearLayout>
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                android:id="@+id/tvRestroAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivDistance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llCousine" />
+
+            <ImageView
+                android:id="@+id/ivDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/nav_s"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRestroAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRestroAddress" />
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                android:id="@+id/tvTimeAddToCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/delivery"
+                android:drawablePadding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/tvRestroAddress"
+                app:layout_constraintTop_toBottomOf="@+id/tvRestroAddress" />
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                android:id="@+id/tvMinOrderAddToCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawableLeft="@drawable/cart_a"
+                android:drawablePadding="10dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvTimeAddToCard"
+                app:layout_constraintStart_toEndOf="@+id/view13" />
+
+            <com.TUBEDELIVERIES.Utility.SourceSansProSemiboldTextView
+                android:id="@+id/tvRestroTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/ivRating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivRestroImage" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieAnimationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ivFav"
+                app:layout_constraintEnd_toEndOf="@+id/ivFav"
+                app:layout_constraintStart_toStartOf="@+id/ivFav"
+                app:layout_constraintTop_toTopOf="@+id/ivFav"
+                app:lottie_fileName="362-like.json" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+        android:id="@+id/tvAddToCart"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Add To Cart"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:background="@color/green"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>

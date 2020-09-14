@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.TUBEDELIVERIES.Utility.SourceSansProSemiboldTextView
+        android:id="@+id/tvEatType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/select_eat_option"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    <RadioGroup
+        android:id="@+id/optionGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvEatType"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tvEatType"
+        app:layout_constraintTop_toBottomOf="@+id/tvEatType">
+
+
+        <RadioButton
+            android:id="@+id/homeRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:button="@drawable/radioselector_filter"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="@string/home_delivery" />
+
+        <RadioButton
+            android:id="@+id/pickRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:button="@drawable/radioselector_filter"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="@string/pick_up" />
+
+        <RadioButton
+            android:id="@+id/restaurantRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:button="@drawable/radioselector_filter"
+            android:padding="10dp"
+            android:text="@string/eat_at_restaurant" />
+
+
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "412443536630",
+    "firebase_url": "https://tube-deliveries.firebaseio.com",
+    "project_id": "tube-deliveries",
+    "storage_bucket": "tube-deliveries.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412443536630:android:15c3e71749e771a3fcd0d7",
+        "android_client_info": {
+          "package_name": "com.TUBEDELIVERIES"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412443536630-4sj363cfn48a13qsor1j9smrjrd344o9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.TUBEDELIVERIES",
+            "certificate_hash": "8ce3c2db66866c2b848bb84203a0353207b0b3a3"
+          }
+        },
+        {
+          "client_id": "412443536630-4ada6vkpjd2kk2q7vispfve3anfvuouj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9msMvJRL3Q59QKAMr8RlEFlyBQBpHH5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412443536630-4ada6vkpjd2kk2q7vispfve3anfvuouj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

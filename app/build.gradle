@@ -1,0 +1,166 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.TUBEDELIVERIES"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 4
+        versionName "1.4"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
+    configurations {
+        all {
+            exclude module: 'httpclient'
+            exclude module: 'commons-logging'
+        }
+    }
+//
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+    useLibrary 'org.apache.http.legacy'
+
+}
+
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.amitshekhar.android:debug-db:1.0.6'
+
+
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+
+
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+
+    //country code picker
+    implementation 'com.hbb20:ccp:2.2.2'
+
+
+    implementation 'org.apache.httpcomponents:httpcore:4.4.1'
+    implementation 'org.apache.httpcomponents:httpclient:4.5'
+
+
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+
+
+
+    implementation 'com.mcxiaoke.viewpagerindicator:library:2.4.1@aar'
+    implementation 'com.github.rey5137:material:1.2.5'
+    implementation 'com.airbnb.android:lottie:3.0.7'
+
+    // Facebook shimmer effect dependency
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+    implementation 'com.github.GoodieBag:Pinview:v1.3'
+
+    implementation 'com.google.api-client:google-api-client:1.23.0'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.facebook.android:facebook-login:5.8.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation "com.google.android.gms:play-services-places:17.0.0"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.libraries.places:places:2.1.0'
+
+
+
+    //Room database
+    implementation 'androidx.room:room-runtime:2.2.3'
+    implementation 'com.airbnb.android:lottie:3.0.7'
+
+    annotationProcessor 'androidx.room:room-compiler:2.2.3'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.github.badoualy:stepper-indicator:1.0.7'
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.15.3'
+
+
+
+    //Payfort support sdk
+    implementation project(':FORTSDKv1.5')
+    implementation 'com.victor:lib:1.0.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.shamanland:fonticon:0.1.8'
+    implementation('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
+        // exclusion is not necessary, but generally a good idea.
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+    //implementation 'com.google.guava:guava:19.0'
+    implementation 'org.bouncycastle:bcprov-jdk16:1.46'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs'
+    })
+
+    androidTestImplementation 'com.google.code.findbugs:jsr305:1.3.9'
+
+
+
+}
+
+
