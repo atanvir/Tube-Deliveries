@@ -56,7 +56,18 @@ public class OnUpcomingAdapter  extends RecyclerView.Adapter<OnUpcomingAdapter.O
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull OnUpcomingAdapter.OnUpcomingViewHolder holder, int i) {
+
         upcomingOrderList.get(i).setEatOption(1);
 
         holder.tvRestaurantName.setText(upcomingOrderList.get(i).getRestaurantName());
@@ -166,6 +177,10 @@ public class OnUpcomingAdapter  extends RecyclerView.Adapter<OnUpcomingAdapter.O
         holder.recyclerMyOrders.setLayoutManager(new LinearLayoutManager(context));
         holder.recyclerMyOrders.setAdapter(new UpcomingOrderMenuAdapter(context, upcomingOrderList.get(i).getOrderMenu(),upcomingOrderList.get(i).getCurrency()));
         holder.cl_myOrders.setVisibility(View.GONE);
+        if(i==0)
+        {
+            holder.mainCl.performClick();
+        }
     }
 
     @Override

@@ -54,8 +54,22 @@ public class PreviousAdapter extends RecyclerView.Adapter<PreviousAdapter.Previo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PreviousViewHolder previousViewHolder, int i) {
+    public long getItemId(int position) {
+        return  position;
+    }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull PreviousViewHolder previousViewHolder, int i) {
+        if(i!=0)
+        {
+            previousViewHolder.ivPreviousDown.setImageResource(R.drawable.drop_down_icon);
+            previousViewHolder.cl_previous.setVisibility(View.GONE);
+        }
         if (list.get(i).getRestaurant_image() != null && !list.get(i).getRestaurant_image().isEmpty())
             Glide.with(context).load(list.get(i).getRestaurant_image()).into(previousViewHolder.ivPreviousOrder);
             previousViewHolder.tvPreviousOrderName.setText(list.get(i).getRestaurent_name());
@@ -79,6 +93,8 @@ public class PreviousAdapter extends RecyclerView.Adapter<PreviousAdapter.Previo
 
             String address = list.get(i).getAddress();
             String filterAddress = address.replaceAll("null","");
+
+            previousViewHolder.tvDeliveredPrevious.setText(list.get(i).getDelivery_status());
     }
 
     @Override
@@ -137,6 +153,9 @@ public class PreviousAdapter extends RecyclerView.Adapter<PreviousAdapter.Previo
 
         @BindView(R.id.mainCl)
         ConstraintLayout mainCl;
+
+        @BindView(R.id.tvDeliveredPrevious)
+        TextView tvDeliveredPrevious;
 
 
 

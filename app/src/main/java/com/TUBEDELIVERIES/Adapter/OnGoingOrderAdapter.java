@@ -64,7 +64,24 @@ public class OnGoingOrderAdapter extends RecyclerView.Adapter<OnGoingOrderAdapte
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull OnGoingViewHolder onGoingViewHolder, int i) {
+        if(i==0)
+        {
+            onGoingViewHolder.ivDropDownOrder.setImageResource(R.drawable.drop_down_ic);
+            onGoingViewHolder.constraintLayout.setBackground(context.getDrawable(R.drawable.bg_expand));
+            onGoingViewHolder.cl_myOrders.setVisibility(View.VISIBLE);
+
+        }
         onGoingViewHolder.tvRestaurantName.setText(onGoingList.get(i).getRestaurant_name());
         onGoingViewHolder.tvRestaurantNameBelow.setText(onGoingList.get(i).getRestaurant_name());
         onGoingViewHolder.tvOrderId.setText(context.getResources().getString(R.string.order_id)+onGoingList.get(i).getOrder_number());
@@ -132,6 +149,7 @@ public class OnGoingOrderAdapter extends RecyclerView.Adapter<OnGoingOrderAdapte
         onGoingViewHolder.edStatus.setText(onGoingList.get(i).getDelivery_status());
         onGoingViewHolder.recyclerMyOrders.setLayoutManager(new LinearLayoutManager(context));
         onGoingViewHolder.recyclerMyOrders.setAdapter(new MyOrderAdapter(context,onGoingList.get(i).getOrderMenu(),onGoingList.get(i).getCurrency()));
+
     }
 
 
