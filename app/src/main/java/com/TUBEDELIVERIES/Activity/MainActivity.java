@@ -606,6 +606,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
 
+
+
     //    METHOD TO GET CURRENT LOCATION OF DEVICE
     public void loadCurrentLoc() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -817,13 +819,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#reques-tPermissions for more details.
             return;
         }
         boolean b = mFusedLocationClient != null && locationRequest != null;

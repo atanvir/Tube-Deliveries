@@ -71,8 +71,6 @@ public class FetchAddressService extends IntentService {
         if (intent != null)
         {
             String errorMessage = "", area ="",city,pinCode="" , country_name ;
-
-
             resultReceiver = intent.getParcelableExtra(FetchAddressService.RECEIVER);
             Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 

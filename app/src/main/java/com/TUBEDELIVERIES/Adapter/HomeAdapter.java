@@ -148,11 +148,12 @@ public class HomeAdapter extends RecyclerView.Adapter {
         if(nearByRestroList != null && nearByRestroList.size() > 0 && topRatedRestroList.size() > 0 && topRatedRestroList != null && nearByGroceryList!=null && nearByGroceryList.size()>0 && offersList!=null && offersList.size()>0)
         {
             return 4;
-        }else if(nearByRestroList!=null && nearByRestroList.size()>0)
+       }else if(nearByRestroList!=null && nearByRestroList.size()>0)
         {
             return 4;
         }else if(nearByGroceryList!=null && nearByGroceryList.size()>0)
         {
+
             return 4;
         }
         else if(topRatedRestroList!=null && topRatedRestroList.size()>0)
@@ -214,6 +215,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
             });
 
         }
+
     }
 
     class RestroListViewHolder extends RecyclerView.ViewHolder {
@@ -221,6 +223,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tvRestaurant) TextView tvRestaurant;
         @BindView(R.id.tvViewMore) TextView tvViewMore;
         @BindView(R.id.view) View view;
+
 
         public RestroListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -233,7 +236,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
                     if(getAdapterPosition()==2) {
                         Intent intent = new Intent(context, RestrauntListingAct.class);
                         intent.putExtra(ParamEnum.FROM.theValue(), ParamEnum.TOP_RATED_RESTRO.theValue());
-                        intent.putExtra(ParamEnum.TITLE.theValue(), "Top-Rated Restaurants");
+                        intent.putExtra(ParamEnum.TITLE.theValue(), "Top-Rated Restaurants & Groceries");
                         context.startActivity(intent);
 
                     }else if (getAdapterPosition()==0){
@@ -242,7 +245,7 @@ public class HomeAdapter extends RecyclerView.Adapter {
                         intent.putExtra(ParamEnum.TITLE.theValue(), "Near-by Restaurants");
                         context.startActivity(intent);
                     }else
-                    {
+                   {
                         Intent intent = new Intent(context, RestrauntListingAct.class);
                         intent.putExtra(ParamEnum.FROM.theValue(), ParamEnum.NEAR_BY_GROCERY_STORE.theValue());
                         intent.putExtra(ParamEnum.TITLE.theValue(), "Near-by Grocery Stores");
