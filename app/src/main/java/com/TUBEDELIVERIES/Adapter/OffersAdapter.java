@@ -61,8 +61,12 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.ViewHolder
         {
             if (!((OffereDetail) offerList.get(i)).getThumbnail().equalsIgnoreCase("")){
                 CommonUtilities.setImage(context, holder.progressbar, ((OffereDetail) offerList.get(i)).getThumbnail(), holder.ivDiscount);}
+//            else
+//            {
+//                Glide.with(context).load(R.drawable.debit_card).override(65, 65).into(holder.ivDiscount);
+//
+//            }
                 holder.tvRestroName.setText("Use code : "+((OffereDetail) offerList.get(i)).getCoupon_code());
-                Glide.with(context).load(R.drawable.debit_card).override(65, 65).into(holder.ivDiscount);
                 holder.tvOffer.setText(((OffereDetail) offerList.get(i)).getType());
                 holder.tvValidity.setText("This offer is valid till " + ((OffereDetail) offerList.get(i)).getValidDate());
         }
