@@ -216,9 +216,7 @@ public class PaymentModeActivity extends AppCompatActivity implements IPaymentRe
 
             try {
                 ServicesInterface servicesInterface = ServicesConnection.getInstance().createService();
-                Call<CommonModel> loginCall = servicesInterface.place_order(userId, "COD", latitude, longitude,user_current_address , extra_note, landmark, area,house_no,pincode,price,discount,total_amont_to_paid,"","25","");
-
-
+                Call<CommonModel> loginCall = servicesInterface.place_order(userId, "COD", latitude, longitude,user_current_address , extra_note, landmark, area,house_no,pincode,price,discount,total_amont_to_paid,"","25","","","");
                 ServicesConnection.getInstance().enqueueWithoutRetry(
                         loginCall,
                         this,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Activity.MyCartActivity">
 
 
@@ -21,10 +21,11 @@
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constrainedHeight="true"
         android:fillViewport="true"
+        app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@+id/btnConfirmMyCart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_bias="0.0">
@@ -69,7 +70,73 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/offersRV" />
+                app:layout_constraintTop_toBottomOf="@+id/clCouponSection" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clOffers"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#F6F6F6"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerMyCart">
+
+
+                <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
+                    android:id="@+id/tvOffers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Offers"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivArrowOffers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/o_up"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvOffers"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvOffers" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvOffers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/applyCouponCl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/clOffers"
+                app:layout_constraintTop_toBottomOf="@+id/clOffers"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvNoOffers"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:text="No offers avaialable"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/rvOffers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clOffers" />
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/applyCouponCl"
@@ -79,7 +146,16 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view31">
+                app:layout_constraintTop_toBottomOf="@+id/rvOffers">
+
+                <View
+                    android:id="@+id/view33"
+                    android:layout_width="0dp"
+                    android:layout_height="0.1dp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <com.TUBEDELIVERIES.Utility.SourceSansProRegularTextView
@@ -87,9 +163,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Applied Offer"
-                    android:textColor="@color/black"
+                    android:text="Apply Coupon"
                     android:textAllCaps="true"
+                    android:textColor="@color/black"
                     android:textSize="17dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -108,27 +184,81 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/offersRV"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCouponSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/applyCouponCl"
-                app:layout_constraintStart_toStartOf="@+id/applyCouponCl"
-                app:layout_constraintTop_toBottomOf="@+id/applyCouponCl" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/applyCouponCl">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:hintTextAppearance="@style/editColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edCouponCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:drawableRight="@drawable/coupon"
+                        android:drawablePadding="16dp"
+                        android:hint="Enter Coupon Code"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:textSize="15dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:id="@+id/view9"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout_first_name"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout_first_name"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout_first_name" />
+
+                <Button
+                    android:id="@+id/btnApplyCoupon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/login_button_selector"
+                    android:backgroundTint="@color/colorGreen"
+                    android:text="Apply"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout_first_name"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout_first_name"
+                    app:layout_constraintTop_toBottomOf="@+id/view9"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <View
                 android:id="@+id/view31"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:layout_marginTop="24dp"
-                android:visibility="gone"
                 android:background="@color/colorGrey"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,14 +271,13 @@
                 app:layout_constraintBottom_toTopOf="@+id/billLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/offersRV" />
+                app:layout_constraintTop_toBottomOf="@+id/clCouponSection" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </ScrollView>
-
 
     <TextView
         android:id="@+id/tvEmptyCart"

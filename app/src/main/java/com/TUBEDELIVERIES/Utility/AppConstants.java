@@ -69,4 +69,5 @@ public interface AppConstants extends Serializable {
     String GET_CURRENCY = "alpha/{code}";
     String GET_CURRENCY_SYMBOL = "currencymap.json";
     String CONFIRM_ORDER = "confirm_order";
+    String APPLY_COUPON = "applycoupon";
 }

@@ -65,7 +65,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.drawable.ic_laucher)
+                .setSmallIcon(R.drawable.app_icon)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon))
                 .setContentTitle(title)
                 .setContentText(body)
@@ -79,7 +79,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(new Random().nextInt(), PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
         notificationManager.notify(notificationId, mBuilder.build());
-
     }
 
 }

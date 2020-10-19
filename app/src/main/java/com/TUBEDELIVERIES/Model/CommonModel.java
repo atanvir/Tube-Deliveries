@@ -117,6 +117,59 @@ public class CommonModel implements Parcelable {
     @Expose
     private ResponseBean payresponse;
 
+    @SerializedName("apply_coupon")
+    @Expose
+    private ApplyCoupon apply_coupon;
+
+    protected CommonModel(Parcel in) {
+        walletAmount = in.readString();
+        topupList = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        topupHistory = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        extra_details = in.readParcelable(ResponseBean.class.getClassLoader());
+        ongoing_order = in.createTypedArrayList(ResponseBean.CREATOR);
+        previous_order = in.createTypedArrayList(ResponseBean.CREATOR);
+        cartList = in.createTypedArrayList(OrderItemsEntity.CREATOR);
+        menu_item = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        userDetails = in.readParcelable(ResponseBean.class.getClassLoader());
+        menuList = in.createTypedArrayList(OrderItemsEntity.CREATOR);
+        favourite = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        cuisine = in.createTypedArrayList(ResponseBean.CREATOR);
+        category = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        search = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        filter = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        message = in.readString();
+        cardList = in.createTypedArrayList(ResponseBean.CREATOR);
+        offerList = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        nearBy = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        top_rated = in.createTypedArrayList(RestaurantResponse.CREATOR);
+        detailsRestorent = in.readParcelable(RestaurantResponse.class.getClassLoader());
+        homeList = in.readParcelable(ResponseBean.class.getClassLoader());
+        status = in.readString();
+        restorentInfo = in.readParcelable(ResponseBean.class.getClassLoader());
+        appCredit = in.readString();
+        payresponse = in.readParcelable(ResponseBean.class.getClassLoader());
+    }
+
+    public static final Creator<CommonModel> CREATOR = new Creator<CommonModel>() {
+        @Override
+        public CommonModel createFromParcel(Parcel in) {
+            return new CommonModel(in);
+        }
+
+        @Override
+        public CommonModel[] newArray(int size) {
+            return new CommonModel[size];
+        }
+    };
+
+    public ApplyCoupon getApply_coupon() {
+        return apply_coupon;
+    }
+
+    public void setApply_coupon(ApplyCoupon apply_coupon) {
+        this.apply_coupon = apply_coupon;
+    }
+
     public ResponseBean getPayresponse() {
         return payresponse;
     }
@@ -149,44 +202,6 @@ public class CommonModel implements Parcelable {
         this.stories = stories;
     }
 
-    protected CommonModel(Parcel in) {
-        walletAmount = in.readString();
-        topupList = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        topupHistory = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        extra_details = in.readParcelable(ResponseBean.class.getClassLoader());
-        ongoing_order = in.createTypedArrayList(ResponseBean.CREATOR);
-        previous_order = in.createTypedArrayList(ResponseBean.CREATOR);
-        cartList = in.createTypedArrayList(OrderItemsEntity.CREATOR);
-        menu_item = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        userDetails = in.readParcelable(ResponseBean.class.getClassLoader());
-        menuList = in.createTypedArrayList(OrderItemsEntity.CREATOR);
-        favourite = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        cuisine = in.createTypedArrayList(ResponseBean.CREATOR);
-        category = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        search = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        filter = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        message = in.readString();
-        cardList = in.createTypedArrayList(ResponseBean.CREATOR);
-        offerList = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        nearBy = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        top_rated = in.createTypedArrayList(RestaurantResponse.CREATOR);
-        detailsRestorent = in.readParcelable(RestaurantResponse.class.getClassLoader());
-        homeList = in.readParcelable(ResponseBean.class.getClassLoader());
-        status = in.readString();
-        restorentInfo = in.readParcelable(ResponseBean.class.getClassLoader());
-    }
-
-    public static final Creator<CommonModel> CREATOR = new Creator<CommonModel>() {
-        @Override
-        public CommonModel createFromParcel(Parcel in) {
-            return new CommonModel(in);
-        }
-
-        @Override
-        public CommonModel[] newArray(int size) {
-            return new CommonModel[size];
-        }
-    };
 
     public List<NotificationList> getNotificationList() {
         return notificationList;
@@ -469,5 +484,7 @@ public class CommonModel implements Parcelable {
         dest.writeParcelable(homeList, flags);
         dest.writeString(status);
         dest.writeParcelable(restorentInfo, flags);
+        dest.writeString(appCredit);
+        dest.writeParcelable(payresponse, flags);
     }
 }

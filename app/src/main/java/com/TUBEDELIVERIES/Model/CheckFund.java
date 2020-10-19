@@ -1,9 +1,12 @@
 package com.TUBEDELIVERIES.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CheckFund {
+public class CheckFund implements Parcelable {
 
     @SerializedName("wallet")
     @Expose
@@ -14,6 +17,21 @@ public class CheckFund {
     @SerializedName("credit")
     @Expose
     private Credit credit;
+
+    protected CheckFund(Parcel in) {
+    }
+
+    public static final Creator<CheckFund> CREATOR = new Creator<CheckFund>() {
+        @Override
+        public CheckFund createFromParcel(Parcel in) {
+            return new CheckFund(in);
+        }
+
+        @Override
+        public CheckFund[] newArray(int size) {
+            return new CheckFund[size];
+        }
+    };
 
     public Wallet getWallet() {
         return wallet;
@@ -37,6 +55,15 @@ public class CheckFund {
 
     public void setCredit(Credit credit) {
         this.credit = credit;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
     }
 
     public class Wallet {

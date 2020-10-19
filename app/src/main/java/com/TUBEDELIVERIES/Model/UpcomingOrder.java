@@ -1,11 +1,14 @@
 package com.TUBEDELIVERIES.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class UpcomingOrder {
+public class UpcomingOrder implements Parcelable {
 
     @SerializedName("order_id")
     @Expose
@@ -100,6 +103,57 @@ public class UpcomingOrder {
     @SerializedName("currency")
     @Expose
     private String currency;
+
+    protected UpcomingOrder(Parcel in) {
+        orderId = in.readLong();
+        orderNumber = in.readString();
+        restaurantId = in.readLong();
+        restaurantName = in.readString();
+        restaurantImage = in.readString();
+        orderDate = in.readString();
+        deliveryStatus = in.readString();
+        if (in.readByte() == 0) {
+            price = null;
+        } else {
+            price = in.readDouble();
+        }
+        discount = in.readString();
+        if (in.readByte() == 0) {
+            totalPrice = null;
+        } else {
+            totalPrice = in.readDouble();
+        }
+        address = in.readString();
+        paymentType = in.readString();
+        orderPlaceTime = in.readString();
+        expectedDeliveryTime = in.readString();
+        deliveryPeroson = in.readString();
+        phoneNumber = in.readString();
+        cancelStatus = in.readLong();
+        cancelTime = in.readLong();
+        eatOption = in.readInt();
+        pickupDate = in.readString();
+        pickupTime = in.readString();
+        vistDate = in.readString();
+        vistTime = in.readString();
+        noOfPeople = in.readString();
+        cartAddress = in.readString();
+        latitude = in.readString();
+        longitude = in.readString();
+        currency = in.readString();
+    }
+
+    public static final Creator<UpcomingOrder> CREATOR = new Creator<UpcomingOrder>() {
+        @Override
+        public UpcomingOrder createFromParcel(Parcel in) {
+            return new UpcomingOrder(in);
+        }
+
+        @Override
+        public UpcomingOrder[] newArray(int size) {
+            return new UpcomingOrder[size];
+        }
+    };
 
     public String getCurrency() {
         return currency;
@@ -339,5 +393,52 @@ public class UpcomingOrder {
 
     public void setOrderMenu(List<OrderMenu> orderMenu) {
         this.orderMenu = orderMenu;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(orderId);
+        dest.writeString(orderNumber);
+        dest.writeLong(restaurantId);
+        dest.writeString(restaurantName);
+        dest.writeString(restaurantImage);
+        dest.writeString(orderDate);
+        dest.writeString(deliveryStatus);
+        if (price == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(price);
+        }
+        dest.writeString(discount);
+        if (totalPrice == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(totalPrice);
+        }
+        dest.writeString(address);
+        dest.writeString(paymentType);
+        dest.writeString(orderPlaceTime);
+        dest.writeString(expectedDeliveryTime);
+        dest.writeString(deliveryPeroson);
+        dest.writeString(phoneNumber);
+        dest.writeLong(cancelStatus);
+        dest.writeLong(cancelTime);
+        dest.writeInt(eatOption);
+        dest.writeString(pickupDate);
+        dest.writeString(pickupTime);
+        dest.writeString(vistDate);
+        dest.writeString(vistTime);
+        dest.writeString(noOfPeople);
+        dest.writeString(cartAddress);
+        dest.writeString(latitude);
+        dest.writeString(longitude);
+        dest.writeString(currency);
     }
 }

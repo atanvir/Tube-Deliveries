@@ -1,9 +1,12 @@
 package com.TUBEDELIVERIES.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StoryModel {
+public class StoryModel implements Parcelable {
         @SerializedName("id")
         @Expose
         private int id;
@@ -20,7 +23,27 @@ public class StoryModel {
         @Expose
         private String createdAt;
 
-        public int getId() {
+    protected StoryModel(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        description = in.readString();
+        image = in.readString();
+        createdAt = in.readString();
+    }
+
+    public static final Creator<StoryModel> CREATOR = new Creator<StoryModel>() {
+        @Override
+        public StoryModel createFromParcel(Parcel in) {
+            return new StoryModel(in);
+        }
+
+        @Override
+        public StoryModel[] newArray(int size) {
+            return new StoryModel[size];
+        }
+    };
+
+    public int getId() {
             return id;
         }
 
@@ -61,4 +84,17 @@ public class StoryModel {
         }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(image);
+        dest.writeString(createdAt);
+    }
 }

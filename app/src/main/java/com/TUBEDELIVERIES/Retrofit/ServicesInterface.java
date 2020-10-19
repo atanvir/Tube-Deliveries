@@ -154,7 +154,9 @@ public interface ServicesInterface {
                                   @Field("totalPrice") String totalPrice,
                                   @Field("transaction_id") String transaction_id,
                                   @Field("delivery_charges") String delivery_charges,
-                                  @Field("currency") String currency);
+                                  @Field("currency") String currency,
+                                  @Field("coupon_id") String coupon_id,
+                                  @Field("coupon_code") String coupon_code);
 
     @FormUrlEncoded
     @POST(AppConstants.ADD_BALANCE_TOPUP)
@@ -396,6 +398,10 @@ public interface ServicesInterface {
     @FormUrlEncoded
     @POST(AppConstants.CONFIRM_ORDER)
     Call<CommonModel> confirmOrder(@Field("order_number") String order_number);
+
+    @FormUrlEncoded
+    @POST(AppConstants.APPLY_COUPON)
+    Call<CommonModel> applyCoupon(@Field("user_id") String user_id, @Field("coupon_code") String coupon_code);
 }
 
 

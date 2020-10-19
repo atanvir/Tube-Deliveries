@@ -125,7 +125,7 @@ public class WebviewActivity extends AppCompatActivity {
             String userId = SharedPreferenceWriter.getInstance(this).getString(SPreferenceKey.USERID);
             try {
                 ServicesInterface servicesInterface = ServicesConnection.getInstance().createService();
-                Call<CommonModel> loginCall = servicesInterface.place_order(userId, "ONLINE", getValue("latitude"), getValue("longitude"),SharedPreferenceWriter.getInstance(WebviewActivity.this).getString(SPreferenceKey.ADDRESS) , getValue("extra_note"), getValue("Landmark"), "","",getValue("pincode"),getValue("price"),getValue("discount"),getValue("total_amont_to_paid"),transaction_id,getValue("delivery_charges"),getValue("currency_code"));
+                Call<CommonModel> loginCall = servicesInterface.place_order(userId, "ONLINE", getValue("latitude"), getValue("longitude"),SharedPreferenceWriter.getInstance(WebviewActivity.this).getString(SPreferenceKey.ADDRESS) , getValue("extra_note"), getValue("Landmark"), "","",getValue("pincode"),getValue("price"),!getValue("discount").equalsIgnoreCase("")?getValue("discount"):"0",getValue("total_amont_to_paid"),transaction_id,getValue("delivery_charges"),getValue("currency_code"),getValue("coupon_id"),getValue("coupon_code"));
 
                 ServicesConnection.getInstance().enqueueWithoutRetry(
                         loginCall,

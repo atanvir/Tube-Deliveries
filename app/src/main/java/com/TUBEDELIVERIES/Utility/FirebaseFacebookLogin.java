@@ -39,7 +39,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FirebaseFacebookLogin extends AppCompatActivity {
-
     private static final String TAG = "LoginModel";
     private static final int FB_LOGIN = 121;
     CallbackManager callbackManager;
@@ -106,7 +105,6 @@ public class FirebaseFacebookLogin extends AppCompatActivity {
             @Override
             public void onCancel() {
                 Toast.makeText(FirebaseFacebookLogin.this, "Request Cancel", Toast.LENGTH_SHORT).show();
-                Log.i("facebook onCancel----->", "cancel");
                 Intent intent = new Intent();
                 intent = null;
                 setResult(FB_LOGIN, intent);
@@ -116,11 +114,6 @@ public class FirebaseFacebookLogin extends AppCompatActivity {
             @Override
             public void onError(FacebookException error) {
                 Toast.makeText(FirebaseFacebookLogin.this, "" + error.toString(), Toast.LENGTH_SHORT).show();
-//                if (error instanceof FacebookAuthorizationException) {
-//                    if (AccessToken.getCurrentAccessToken() != null) {
-//                        LoginManager.getInstance().logOut();
-//                    }
-//                }
             }
         });
     }
@@ -203,8 +196,6 @@ public class FirebaseFacebookLogin extends AppCompatActivity {
 
                                 }
                             },4000);
-
-
 
                         }
 

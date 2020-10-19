@@ -46,7 +46,6 @@ public class SplashActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-
                             if (SharedPreferenceWriter.getInstance(SplashActivity.this).getString(SPreferenceKey.ISLOGIN).equals(ParamEnum.LOGIN.theValue())) {
                                 Intent mainIntent = new Intent(SplashActivity.this,MainActivity.class);
                                 startActivity(mainIntent);
@@ -60,7 +59,6 @@ public class SplashActivity extends AppCompatActivity {
                     };
                     timer.schedule(task, 2000);
                 } catch (Exception ex) {
-
                 }
             }
 

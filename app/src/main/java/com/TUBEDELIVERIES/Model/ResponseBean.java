@@ -9,11 +9,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Mahipal Singh on 23,May,2019
- * mahisingh1@outlook.com
- */
-
 public class ResponseBean implements Parcelable {
     @SerializedName("id")
     private String id;
@@ -205,39 +200,6 @@ public class ResponseBean implements Parcelable {
     @Expose
     private String currency;
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-
-    public String getDelivery_price() {
-        return delivery_price;
-    }
-
-    public void setDelivery_price(String delivery_price) {
-        this.delivery_price = delivery_price;
-    }
-
-    public String getPf_payment_id() {
-        return pf_payment_id;
-    }
-
-    public void setPf_payment_id(String pf_payment_id) {
-        this.pf_payment_id = pf_payment_id;
-    }
-
-    public String getPayment_status() {
-        return payment_status;
-    }
-
-    public void setPayment_status(String payment_status) {
-        this.payment_status = payment_status;
-    }
-
     protected ResponseBean(Parcel in) {
         id = in.readString();
         en_name = in.readString();
@@ -315,10 +277,10 @@ public class ResponseBean implements Parcelable {
         cartAddress = in.readString();
         appCredit = in.readString();
         store_type = in.readString();
-        pf_payment_id=in.readString();
-        payment_status=in.readString();
-        delivery_price=in.readString();
-        currency=in.readString();
+        pf_payment_id = in.readString();
+        payment_status = in.readString();
+        delivery_price = in.readString();
+        currency = in.readString();
     }
 
     public static final Creator<ResponseBean> CREATOR = new Creator<ResponseBean>() {
@@ -332,6 +294,41 @@ public class ResponseBean implements Parcelable {
             return new ResponseBean[size];
         }
     };
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+
+    public String getDelivery_price() {
+        return delivery_price;
+    }
+
+    public void setDelivery_price(String delivery_price) {
+        this.delivery_price = delivery_price;
+    }
+
+    public String getPf_payment_id() {
+        return pf_payment_id;
+    }
+
+    public void setPf_payment_id(String pf_payment_id) {
+        this.pf_payment_id = pf_payment_id;
+    }
+
+    public String getPayment_status() {
+        return payment_status;
+    }
+
+    public void setPayment_status(String payment_status) {
+        this.payment_status = payment_status;
+    }
+
+
 
     public String getStore_type() {
         return store_type;
@@ -972,86 +969,86 @@ public class ResponseBean implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(id);
-        parcel.writeString(en_name);
-        parcel.writeByte((byte) (isCheck ? 1 : 0));
-        parcel.writeString(order_id);
-        parcel.writeString(restaurant_image);
-        parcel.writeString(email_id);
-        parcel.writeString(area);
-        parcel.writeString(order_place_time);
-        parcel.writeString(orderDate);
-        parcel.writeString(card_name);
-        parcel.writeString(card_number);
-        parcel.writeString(card_exp_month);
-        parcel.writeString(card_exp_year);
-        parcel.writeString(payment_mode);
-        parcel.writeString(expected_delivery_time);
-        parcel.writeString(delivery_peroson);
-        parcel.writeString(phone_number);
-        parcel.writeString(payment_type);
-        parcel.writeString(restorent_image);
-        parcel.writeString(deliveryStatus);
-        parcel.writeString(book_date);
-        parcel.writeString(order_number);
-        parcel.writeString(orderd_time);
-        parcel.writeString(image);
-        parcel.writeString(delivered_time);
-        parcel.writeTypedList(menu_data);
-        parcel.writeTypedList(orderMenu);
-        parcel.writeString(price);
-        parcel.writeString(restaurent_name);
-        parcel.writeString(add_on_name);
-        parcel.writeString(total_price);
-        parcel.writeString(total_paid_amount);
-        parcel.writeString(discount);
-        parcel.writeString(restaurent_id);
-        parcel.writeString(add_on_price);
-        parcel.writeStringList(restorent_time);
-        parcel.writeString(address);
-        parcel.writeString(address_type);
-        parcel.writeString(phone);
-        parcel.writeString(landmark);
-        parcel.writeString(pin);
-        parcel.writeString(name);
-        parcel.writeString(first_name);
-        parcel.writeString(latitude);
-        parcel.writeString(longitude);
-        parcel.writeString(country_code);
-        parcel.writeString(access_token);
-        parcel.writeTypedList(nearBy);
-        parcel.writeTypedList(top_rated);
-        parcel.writeTypedList(offer);
-        parcel.writeTypedList(restorent_review);
-        parcel.writeString(last_name);
-        parcel.writeString(description);
-        parcel.writeString(total_review);
-        parcel.writeString(cancel_status);
-        parcel.writeString(cancel_time);
-        parcel.writeString(restaurant_name);
-        parcel.writeString(restaurent_address);
-        parcel.writeString(totalPrice);
-        parcel.writeString(user_current_address);
-        parcel.writeString(total_rating);
-        parcel.writeString(street);
-        parcel.writeString(building);
-        parcel.writeString(floor);
-        parcel.writeString(apartment);
-        parcel.writeString(offered_service);
-        parcel.writeTypedList(offereDetails);
-        parcel.writeLong(eatOption);
-        parcel.writeString(pickupDate);
-        parcel.writeString(pickupTime);
-        parcel.writeString(vistDate);
-        parcel.writeString(vistTime);
-        parcel.writeString(noOfPeople);
-        parcel.writeString(cartAddress);
-        parcel.writeString(appCredit);
-        parcel.writeString(store_type);
-        parcel.writeString(pf_payment_id);
-        parcel.writeString(payment_status);
-        parcel.writeString(delivery_price);
-        parcel.writeString(currency);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(en_name);
+        dest.writeByte((byte) (isCheck ? 1 : 0));
+        dest.writeString(order_id);
+        dest.writeString(restaurant_image);
+        dest.writeString(email_id);
+        dest.writeString(area);
+        dest.writeString(order_place_time);
+        dest.writeString(orderDate);
+        dest.writeString(card_name);
+        dest.writeString(card_number);
+        dest.writeString(card_exp_month);
+        dest.writeString(card_exp_year);
+        dest.writeString(payment_mode);
+        dest.writeString(expected_delivery_time);
+        dest.writeString(delivery_peroson);
+        dest.writeString(phone_number);
+        dest.writeString(payment_type);
+        dest.writeString(restorent_image);
+        dest.writeString(deliveryStatus);
+        dest.writeString(book_date);
+        dest.writeString(order_number);
+        dest.writeString(orderd_time);
+        dest.writeString(image);
+        dest.writeString(delivered_time);
+        dest.writeTypedList(menu_data);
+        dest.writeTypedList(orderMenu);
+        dest.writeString(price);
+        dest.writeString(restaurent_name);
+        dest.writeString(add_on_name);
+        dest.writeString(total_price);
+        dest.writeString(total_paid_amount);
+        dest.writeString(discount);
+        dest.writeString(restaurent_id);
+        dest.writeString(add_on_price);
+        dest.writeStringList(restorent_time);
+        dest.writeString(address);
+        dest.writeString(address_type);
+        dest.writeString(phone);
+        dest.writeString(landmark);
+        dest.writeString(pin);
+        dest.writeString(name);
+        dest.writeString(first_name);
+        dest.writeString(latitude);
+        dest.writeString(longitude);
+        dest.writeString(country_code);
+        dest.writeString(access_token);
+        dest.writeTypedList(nearBy);
+        dest.writeTypedList(top_rated);
+        dest.writeTypedList(offer);
+        dest.writeTypedList(restorent_review);
+        dest.writeString(last_name);
+        dest.writeString(description);
+        dest.writeString(total_review);
+        dest.writeString(cancel_status);
+        dest.writeString(cancel_time);
+        dest.writeString(restaurant_name);
+        dest.writeString(restaurent_address);
+        dest.writeString(totalPrice);
+        dest.writeString(user_current_address);
+        dest.writeString(total_rating);
+        dest.writeString(street);
+        dest.writeString(building);
+        dest.writeString(floor);
+        dest.writeString(apartment);
+        dest.writeString(offered_service);
+        dest.writeTypedList(offereDetails);
+        dest.writeLong(eatOption);
+        dest.writeString(pickupDate);
+        dest.writeString(pickupTime);
+        dest.writeString(vistDate);
+        dest.writeString(vistTime);
+        dest.writeString(noOfPeople);
+        dest.writeString(cartAddress);
+        dest.writeString(appCredit);
+        dest.writeString(store_type);
+        dest.writeString(pf_payment_id);
+        dest.writeString(payment_status);
+        dest.writeString(delivery_price);
+        dest.writeString(currency);
     }
 }

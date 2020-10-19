@@ -17,7 +17,7 @@ public class OffereDetail implements Parcelable {
     private long restorentId;
     @SerializedName("type")
     @Expose
-    private long type;
+    private String type;
     @SerializedName("img")
     @Expose
     private String img;
@@ -47,11 +47,15 @@ public class OffereDetail implements Parcelable {
     @Expose
     private String en_name;
 
+    @SerializedName("coupon_code")
+    @Expose
+    private String coupon_code;
+
 
     protected OffereDetail(Parcel in) {
         id = in.readLong();
         restorentId = in.readLong();
-        type = in.readLong();
+        type = in.readString();
         img = in.readString();
         thumbnail = in.readString();
         validDate = in.readString();
@@ -60,6 +64,7 @@ public class OffereDetail implements Parcelable {
         createdAt = in.readString();
         updatedAt = in.readString();
         en_name= in.readString();
+        coupon_code=in.readString();
     }
 
     public static final Creator<OffereDetail> CREATOR = new Creator<OffereDetail>() {
@@ -90,11 +95,11 @@ public class OffereDetail implements Parcelable {
         this.restorentId = restorentId;
     }
 
-    public long getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(long type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -171,6 +176,14 @@ public class OffereDetail implements Parcelable {
         this.en_name = en_name;
     }
 
+    public String getCoupon_code() {
+        return coupon_code;
+    }
+
+    public void setCoupon_code(String coupon_code) {
+        this.coupon_code = coupon_code;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -180,7 +193,7 @@ public class OffereDetail implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeLong(id);
         dest.writeLong(restorentId);
-        dest.writeLong(type);
+        dest.writeString(type);
         dest.writeString(img);
         dest.writeString(thumbnail);
         dest.writeString(validDate);
@@ -189,5 +202,6 @@ public class OffereDetail implements Parcelable {
         dest.writeString(createdAt);
         dest.writeString(updatedAt);
         dest.writeString(en_name);
+        dest.writeString(coupon_code);
     }
 }

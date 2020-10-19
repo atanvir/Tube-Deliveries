@@ -19,19 +19,6 @@ import java.util.List;
 public class RestaurantResponse  implements  Parcelable {
 
 
-
-    public static final Creator<RestaurantResponse> CREATOR = new Creator<RestaurantResponse>() {
-        @Override
-        public RestaurantResponse createFromParcel(Parcel in) {
-            return new RestaurantResponse(in);
-        }
-
-        @Override
-        public RestaurantResponse[] newArray(int size) {
-            return new RestaurantResponse[size];
-        }
-    };
-
     private String cuisineString;
     private boolean isCheck;
     private boolean isHeartAnimCheck;
@@ -55,6 +42,60 @@ public class RestaurantResponse  implements  Parcelable {
 
     @SerializedName("catname")
     private String catname;
+
+    protected RestaurantResponse(Parcel in) {
+        cuisineString = in.readString();
+        isCheck = in.readByte() != 0;
+        isHeartAnimCheck = in.readByte() != 0;
+        AppendCuisines = in.readString();
+        id = in.readString();
+        restorent_time = in.readString();
+        cart_value = in.readString();
+        catname = in.readString();
+        addon = in.readString();
+        rating = in.readString();
+        latitude = in.readString();
+        min_order_value = in.readString();
+        delivery_time = in.readString();
+        review = in.readString();
+        image = in.readString();
+        user_name = in.readString();
+        en_name = in.readString();
+        name = in.readString();
+        valid_date = in.readString();
+        note = in.readString();
+        quantity = in.readInt();
+        discount = in.readString();
+        customizes = in.createTypedArrayList(CustomizationModel.CREATOR);
+        item_type = in.readString();
+        price = in.readString();
+        restorent_id = in.readString();
+        RestaurantId = in.readString();
+        type = in.readString();
+        menuCount = in.readString();
+        cuisines = in.createTypedArrayList(ResponseBean.CREATOR);
+        is_favorite = in.readString();
+        res_name = in.readString();
+        img = in.readString();
+        thumbnail = in.readString();
+        address = in.readString();
+        description = in.readString();
+        created_at = in.readString();
+        longitude = in.readString();
+        store_type = in.readInt();
+    }
+
+    public static final Creator<RestaurantResponse> CREATOR = new Creator<RestaurantResponse>() {
+        @Override
+        public RestaurantResponse createFromParcel(Parcel in) {
+            return new RestaurantResponse(in);
+        }
+
+        @Override
+        public RestaurantResponse[] newArray(int size) {
+            return new RestaurantResponse[size];
+        }
+    };
 
     public String getCatname() {
         return catname;
@@ -192,46 +233,6 @@ public class RestaurantResponse  implements  Parcelable {
     @Expose
     private int store_type;
 
-
-    protected RestaurantResponse(Parcel in) {
-        cuisineString = in.readString();
-        isCheck = in.readByte() != 0;
-        isHeartAnimCheck = in.readByte() != 0;
-        id = in.readString();
-        AppendCuisines = in.readString();
-        restorent_time = in.readString();
-        cart_value = in.readString();
-        addon = in.readString();
-        rating = in.readString();
-        min_order_value = in.readString();
-        delivery_time = in.readString();
-        review = in.readString();
-        image = in.readString();
-        user_name = in.readString();
-        en_name = in.readString();
-        name = in.readString();
-        valid_date = in.readString();
-        note = in.readString();
-        quantity = in.readInt();
-        discount = in.readString();
-        customizes = in.createTypedArrayList(CustomizationModel.CREATOR);
-        item_type = in.readString();
-        price = in.readString();
-        restorent_id = in.readString();
-        type = in.readString();
-        menuCount = in.readString();
-        cuisines = in.createTypedArrayList(ResponseBean.CREATOR);
-        is_favorite = in.readString();
-        res_name = in.readString();
-        img = in.readString();
-        thumbnail = in.readString();
-        address = in.readString();
-        description = in.readString();
-        created_at = in.readString();
-        longitude=in.readString();
-        latitude=in.readString();
-        store_type=in.readInt();
-    }
     public RestaurantResponse(){
 
     }
@@ -535,7 +536,6 @@ public class RestaurantResponse  implements  Parcelable {
     }
 
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -546,12 +546,14 @@ public class RestaurantResponse  implements  Parcelable {
         dest.writeString(cuisineString);
         dest.writeByte((byte) (isCheck ? 1 : 0));
         dest.writeByte((byte) (isHeartAnimCheck ? 1 : 0));
-        dest.writeString(id);
         dest.writeString(AppendCuisines);
+        dest.writeString(id);
         dest.writeString(restorent_time);
         dest.writeString(cart_value);
+        dest.writeString(catname);
         dest.writeString(addon);
         dest.writeString(rating);
+        dest.writeString(latitude);
         dest.writeString(min_order_value);
         dest.writeString(delivery_time);
         dest.writeString(review);
@@ -567,6 +569,7 @@ public class RestaurantResponse  implements  Parcelable {
         dest.writeString(item_type);
         dest.writeString(price);
         dest.writeString(restorent_id);
+        dest.writeString(RestaurantId);
         dest.writeString(type);
         dest.writeString(menuCount);
         dest.writeTypedList(cuisines);
@@ -577,7 +580,6 @@ public class RestaurantResponse  implements  Parcelable {
         dest.writeString(address);
         dest.writeString(description);
         dest.writeString(created_at);
-        dest.writeString(latitude);
         dest.writeString(longitude);
         dest.writeInt(store_type);
     }

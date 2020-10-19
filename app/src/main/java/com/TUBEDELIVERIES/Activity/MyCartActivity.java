@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -111,8 +112,16 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     TextView tvEmptyCart;
     @BindView(R.id.tvTotalPrice)
     TextView tvTotalPrice;
-    @BindView(R.id.offersRV)
-    RecyclerView offersRV;
+    @BindView(R.id.ivArrowOffers)
+    ImageView ivArrowOffers;
+    @BindView(R.id.edCouponCode)
+    TextInputEditText edCouponCode;
+
+    @BindView(R.id.clCouponSection)
+    ConstraintLayout clCouponSection;
+
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
 
     //offline model class
     private Double delivery_charges=0.0;
@@ -174,16 +183,26 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     @BindView(R.id.view31)
     View aboveCouponClView;
 
+    @BindView(R.id.btnApplyCoupon)
+    Button btnApplyCoupon;
+
+    @BindView(R.id.clOffers)
+    ConstraintLayout clOffers;
+
+    @BindView(R.id.rvOffers)
+    RecyclerView rvOffers;
+
+    @BindView(R.id.tvNoOffers)
+    TextView tvNoOffers;
+
     @BindView(R.id.applyCouponCl)
     ConstraintLayout applyCouponCl;
     private String offered_service="";
-
 
     @BindView(R.id.iv_arrow)
     ImageView iv_arrow;
 
     String eatType="";
-
     boolean homeDelivery=false;
     boolean pickUp=false;
     boolean eatRestaurant=false;
@@ -191,6 +210,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
 
     String errorMsg="Please Add Details";
 
+    private String phoneNumber="";
     private List<OffereDetail> offereDetails;
 
     String eatOption="";
@@ -198,7 +218,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     private String address;
     int storeType;
     private String restroAddres;
-    private String restroLat,restroLong;
+    private String restroLat,restroLong,coupon_code,coupon_id;
     private Double extraDeliveryCharge=0.0;
     private String currency,currencySymbol;
     private Double exchangeRate;
@@ -214,6 +234,8 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
         new CommonUtil().setStatusBarGradiant(this,MyCartActivity.class.getSimpleName());
         ButterKnife.bind(this);
         applyCouponCl.setOnClickListener(this::onClick);
+        btnApplyCoupon.setOnClickListener(this::onClick);
+        clOffers.setOnClickListener(this::onClick);
         menuIv.setVisibility(View.GONE);
         CommonUtilities.setToolbar(this,mainToolbar,tvTitle,getString(R.string.my_cart));
         getIntentData();
@@ -223,12 +245,10 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     }
 
     private void loadData() {
-
         dataBase = MyApplication.getInstance().getDatabase();
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-
                 if (dataBase != null) {
                     offlineOrderList = dataBase.restaurantDao().fetchAllOrderMenuAsList();
                 }
@@ -245,8 +265,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                 public void run() {
                     if (dataBase != null) {
                         if (dataBase.restaurantDao().fetchAllOrderMenu() == null) {
-                            ///if database is empty show empty text
-                            // User runOnUiThread to Upate to main UI Thread
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -265,6 +283,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                                     tvEmptyCart.setVisibility(View.GONE);
                                     btnConfirmMyCart.setVisibility(View.VISIBLE);
                                     tvDiscount.setText("0");
+
                                     if(currency.equalsIgnoreCase("USD"))
                                     {
                                         tvTotalPrice.setText(currencySymbol+" " + CommonUtilities.roundOff(""+totalPrice*exchangeRate));
@@ -277,12 +296,9 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
 
                                     }
 
-
                                     menuDetailsList.clear();
                                     menuDetailsList.addAll(offlineOrderList);
                                     menuDetailAdapter.updateMenuDetailsList(menuDetailsList);
-
-
                                 }
                             });
                         }
@@ -305,7 +321,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     private void getIntentData() {
 
         if (getIntent() != null) {
-
             restaurantname = getIntent().getStringExtra(ParamEnum.RESTAURANT_NAME.theValue());
             restro_id = getIntent().getStringExtra(ParamEnum.RESTRO_ID.theValue());
             restaurantAddress = getIntent().getStringExtra(ParamEnum.RESTAURANT_ADDRESS.theValue());
@@ -317,11 +332,47 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     @OnClick({R.id.btnConfirmMyCart})
     public void onClick(View view) {
         switch (view.getId()) {
+
+            case R.id.clOffers:
+           if(rvOffers.getVisibility()==View.GONE)
+           {
+               rvOffers.setVisibility(View.VISIBLE);
+               ivArrowOffers.setImageResource(R.drawable.drop_down_ic);
+               if(offereDetails.size()>0)
+               {
+                   rvOffers.setLayoutManager(new LinearLayoutManager(this));
+                   rvOffers.setAdapter(new OffersAdapter(this,offereDetails, null));
+                   tvNoOffers.setVisibility(View.GONE);
+
+               }else
+               {
+                   rvOffers.getLayoutParams().height = 100;
+                   rvOffers.requestLayout();
+                   tvNoOffers.setVisibility(View.VISIBLE);
+               }
+           }
+           else
+           {
+
+               ivArrowOffers.setImageResource(R.drawable.drop_down_icon);
+               rvOffers.setVisibility(View.GONE);
+               tvNoOffers.setVisibility(View.GONE);
+
+           }
+           break;
+
             case R.id.btnConfirmMyCart:
                 if(address==null)
                 {
                     Toast.makeText(this, "Please Add Address", Toast.LENGTH_SHORT).show();
-                }else
+                }else if(phoneNumber==null)
+                {
+                    Toast.makeText(this, "Please complete your profile first", Toast.LENGTH_SHORT).show();
+                }else if(phoneNumber.equalsIgnoreCase(""))
+                {
+                    Toast.makeText(this, "Please complete your profile first", Toast.LENGTH_SHORT).show();
+                }
+                else
                 {
                     final String[] option = {""};
                     View dialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_payment_option, null);
@@ -363,21 +414,91 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                 break;
 
             case R.id.applyCouponCl:
-            if (offersRV.getVisibility() == View.GONE) {
+            if (clCouponSection.getVisibility() == View.GONE) {
                 iv_arrow.setImageResource(R.drawable.drop_down_ic);
-                offersRV.setVisibility(View.VISIBLE);
-                OffersAdapter adapter = new OffersAdapter(MyCartActivity.this, offereDetails, this);
-                LinearLayoutManager manager = new LinearLayoutManager(this);
-                manager.setOrientation(RecyclerView.VERTICAL);
-                offersRV.setLayoutManager(manager);
-                offersRV.setAdapter(adapter);
+                clCouponSection.setVisibility(View.VISIBLE);
             } else {
                 iv_arrow.setImageResource(R.drawable.drop_down_icon);
-                offersRV.setVisibility(View.GONE);
+                clCouponSection.setVisibility(View.GONE);
+            }
+            break;
+
+            case R.id.btnApplyCoupon:
+            if(edCouponCode.getText().toString().trim().length()>0)
+            {
+                applyCouponApi();
+
+            }else
+            {
+                Toast.makeText(this, "Please enter coupon code", Toast.LENGTH_SHORT).show();
             }
             break;
         }
     }
+
+    public void applyCouponApi() {
+
+        if (CommonUtilities.isNetworkAvailable(this)) {
+            String user_id = SharedPreferenceWriter.getInstance(this).getString(SPreferenceKey.USERID);
+            try {
+                ServicesInterface servicesInterface = ServicesConnection.getInstance().createService();
+                Call<CommonModel> loginCall = servicesInterface.applyCoupon(user_id,edCouponCode.getText().toString().trim());
+                ServicesConnection.getInstance().enqueueWithoutRetry(loginCall, this, true, new Callback<CommonModel>() {
+                @Override
+                public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+                        CommonModel bean = response.body();
+                        if(response.isSuccessful()) {
+                            if (bean.getStatus().equalsIgnoreCase(ParamEnum.Success.theValue())) {
+
+                                scrollView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        scrollView.fullScroll(View.FOCUS_DOWN);
+                                    }
+                                });
+
+                                if (currency.equalsIgnoreCase("USD")) {
+                                    discount = CommonUtilities.roundOff("" + bean.getApply_coupon().getDiscount_amount());
+                                    tvDiscount.setText(currencySymbol + " " + CommonUtilities.roundOff("" + (bean.getApply_coupon().getDiscount_amount() * exchangeRate)));
+                                    coupon_id = "" + bean.getApply_coupon().getCoupon_id();
+                                    coupon_code = bean.getApply_coupon().getCoupon_code();
+                                    total_amont_to_paid = bean.getApply_coupon().getFinal_amount() * exchangeRate;
+                                    total_amont_to_paid = total_amont_to_paid + extraDeliveryCharge;
+                                    tvTotalAmountPaid.setText(currencySymbol + " " + CommonUtilities.roundOff("" + total_amont_to_paid));
+                                } else {
+                                    discount = CommonUtilities.roundOff("" + bean.getApply_coupon().getDiscount_amount());
+                                    tvDiscount.setText(currencySymbol + " " + CommonUtilities.roundOff("" + bean.getApply_coupon().getDiscount_amount()));
+                                    coupon_id = "" + bean.getApply_coupon().getCoupon_id();
+                                    coupon_code = bean.getApply_coupon().getCoupon_code();
+                                    total_amont_to_paid = bean.getApply_coupon().getFinal_amount();
+                                    total_amont_to_paid = total_amont_to_paid + extraDeliveryCharge;
+                                    tvTotalAmountPaid.setText(currencySymbol + " " + CommonUtilities.roundOff("" + total_amont_to_paid));
+                                }
+
+                            } else {
+                                Toast.makeText(MyCartActivity.this, "" + bean.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        }else if (response.errorBody() != null) {
+                            CommonUtilities.errorResponse(MyCartActivity.this, response.errorBody());
+                        }
+                    }
+
+                @Override
+                public void onFailure(Call<CommonModel> call, Throwable t) {
+                    Log.e("failure", t.getMessage());
+                }
+            });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            CommonUtilities.snackBar(this, getString(R.string.no_internet));
+
+        }
+    }
+
 
 
     private void setUpRecyclerView() {
@@ -394,10 +515,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     public void myCarListing(boolean isLoader) {
 
         if (CommonUtilities.isNetworkAvailable(this)) {
-
             String user_id = SharedPreferenceWriter.getInstance(this).getString(SPreferenceKey.USERID);
-
-
             try {
                 ServicesInterface servicesInterface = ServicesConnection.getInstance().createService();
                 Call<CommonModel> loginCall = servicesInterface.myCart(user_id);
@@ -413,6 +531,8 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                                     if (bean.getStatus().equalsIgnoreCase(ParamEnum.Success.theValue())) {
 
                                         if (bean.getCartList() != null && bean.getCartList().size() > 0) {
+                                            clOffers.setVisibility(View.VISIBLE);
+                                            rvOffers.setVisibility(View.GONE);
                                             tvEmptyCart.setVisibility(View.GONE);
                                             billLayout.setVisibility(View.VISIBLE);
                                             applyCouponCl.setVisibility(View.VISIBLE);
@@ -424,6 +544,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                                                 offered_service=bean.getExtra_details().getOffered_service();
                                                 storeType=Integer.parseInt(bean.getExtra_details().getStore_type());
                                                 Bundle bundle=new Bundle();
+                                                phoneNumber=bean.getExtra_details().getPhone();
                                                 String currentAddress="";
                                                 if(bean.getExtra_details().getUser_current_address()!=null) {
                                                      currentAddress = bean.getExtra_details().getUser_current_address();
@@ -452,8 +573,8 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                                             applyCouponCl.setVisibility(View.GONE);
                                             aboveCouponClView.setVisibility(View.GONE);
                                             btnConfirmMyCart.setVisibility(View.GONE);
-                                            view32.setVisibility(View.GONE);                                        }
-
+                                            view32.setVisibility(View.GONE);
+                                        }
                                     } else {
                                         CommonUtilities.snackBar(MyCartActivity.this, bean.getMessage());
                                     }
@@ -462,6 +583,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
 
                             @Override
                             public void onFailure(Call<CommonModel> call, Throwable t) {
+                                Log.e("failure", t.getMessage());
                             }
                         });
             } catch (Exception e) {
@@ -473,8 +595,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
 
         }
     }
-
-
 
     @Override
     public void onCustomizeClick(OrderItemsEntity response, int i) {
@@ -627,8 +747,8 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
         String userCurrentAddress = bean.getExtra_details().getUser_current_address() != null ? bean.getExtra_details().getUser_current_address() : "";
         restro_id = (bean.getExtra_details().getRestaurent_id());
 
-        discount = bean.getExtra_details().getTotal_price();
-        total_amont_to_paid = Double.parseDouble(bean.getExtra_details().getTotal_paid_amount());
+       discount =discount;
+        total_amont_to_paid = Double.parseDouble(bean.getExtra_details().getTotal_paid_amount())-Double.parseDouble(discount!=""?discount:"1");
         price = bean.getExtra_details().getTotal_price();
 
         latitude = bean.getExtra_details().getLatitude();
@@ -639,7 +759,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
         menuDetailAdapter.updateMenuDetailsList(menuDetailsList);
         if(currency.equalsIgnoreCase("USD"))
         {
-            
             tvTotalPrice.setText(currencySymbol+" " + CommonUtilities.roundOff(""+Double.parseDouble(bean.getExtra_details().getTotal_price())*exchangeRate));
             tvDiscount.setText(currencySymbol+" " + CommonUtilities.roundOff(""+Double.parseDouble(bean.getExtra_details().getDiscount())*exchangeRate));
             delivery_charges=Double.parseDouble(bean.getExtra_details().getDelivery_price())*exchangeRate;
@@ -647,7 +766,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
             tvDeliveryCharges.setText(currencySymbol+" " + CommonUtilities.roundOff(""+delivery_charges));
             total_amont_to_paid= (total_amont_to_paid*exchangeRate)+extraDeliveryCharge;
             tvTotalAmountPaid.setText(currencySymbol+" " + CommonUtilities.roundOff(""+total_amont_to_paid));
-
 
         }else {
 
@@ -657,6 +775,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
             delivery_charges = delivery_charges + extraDeliveryCharge;
             tvDeliveryCharges.setText(currencySymbol+" " + CommonUtilities.roundOff(""+delivery_charges));
             total_amont_to_paid = total_amont_to_paid + extraDeliveryCharge;
+            total_amont_to_paid = total_amont_to_paid + extraDeliveryCharge;
             tvTotalAmountPaid.setText(currencySymbol+" " + CommonUtilities.roundOff(""+total_amont_to_paid));
         }
     }
@@ -665,12 +784,9 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     ///type for food category catergory 1 for normal 2 for combo
     //////////addToCart api///////
     public void addToCart(int pos, int quantity, String restroId, String type, String menu_id, String addon, String price, String new_order, String status) {
-
         if (CommonUtilities.isNetworkAvailable(this)) {
-
             String token = SharedPreferenceWriter.getInstance(this).getString(SPreferenceKey.TOKEN);
             String device_token = SharedPreferenceWriter.getInstance(this).getString(SPreferenceKey.DEVICETOKEN);
-
 
             Map<String, String> map = new HashMap<>();
             map.put(ParamEnum.AUTHORIZATION.theValue(), String.valueOf(token));
@@ -678,17 +794,12 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
             try {
                 ServicesInterface servicesInterface = ServicesConnection.getInstance().createService();
                 Call<CommonModel> loginCall = servicesInterface.addToCart(map, restroId, type, menu_id, String.valueOf(quantity), addon, price, new_order, status,storeType);
-                ServicesConnection.getInstance().enqueueWithoutRetry(
-                        loginCall,
-                        this,
-                        true,
-                        new Callback<CommonModel>() {
+                ServicesConnection.getInstance().enqueueWithoutRetry(loginCall, this, true, new Callback<CommonModel>() {
                             @Override
                             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
                                 if (response.isSuccessful()) {
                                     CommonModel bean = response.body();
                                     if (bean.getStatus().equalsIgnoreCase(ParamEnum.Success.theValue())) {
-
                                         myCarListing(false);
                                     } else {
 
@@ -995,7 +1106,7 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
             String userId = SharedPreferenceWriter.getInstance(this).getString(SPreferenceKey.USERID);
             try {
                 ServicesInterface servicesInterface = ServicesConnection.getInstance().createService();
-                Call<CommonModel> loginCall = servicesInterface.place_order(userId, paymentMode, latitude, longitude,address, extra_note,Landmark , "",address,pincode,price,discount,""+total_amont_to_paid,"",""+delivery_charges,currency);
+                Call<CommonModel> loginCall = servicesInterface.place_order(userId, paymentMode, latitude, longitude,address, extra_note,Landmark , "",address,pincode,price,!discount.equalsIgnoreCase("")?discount:"0",""+total_amont_to_paid,"",""+delivery_charges,currency,coupon_id,coupon_code);
                 ServicesConnection.getInstance().enqueueWithoutRetry(
                         loginCall,
                         this,
@@ -1048,6 +1159,8 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
             intent.putExtra("total_amont_to_paid",""+total_amont_to_paid);
             intent.putExtra("delivery_charges",""+delivery_charges);
             intent.putExtra("currency_code",""+currency);
+            intent.putExtra("coupon_id", coupon_id);
+            intent.putExtra("coupon_code", coupon_code);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
@@ -1203,8 +1316,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
                    longitude=((HomeDeliveryModel) data).getLongt();
                    address=((HomeDeliveryModel) data).getAddress();
                    new DistaceClass().execute();
-
-
                }
 
 
@@ -1283,7 +1394,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
         if (CommonUtilities.isNetworkAvailable(this)) {
 
             String pickup_date = "", pickup_time = "", vist_date = "", vist_time = "", address = "", no_of_people = "";
-
 
             if (actualData instanceof HomeDeliveryModel) {
                 address = ((HomeDeliveryModel) actualData).getAddress();
@@ -1377,7 +1487,6 @@ public class MyCartActivity extends AppCompatActivity implements MenuDetailAdapt
     {
         @Override
         protected void onPostExecute(String o) {
-            Log.e("km", o);
             if(o.contains("km"))
             {
               Double kms= Double.parseDouble( o.split("km")[0].trim());

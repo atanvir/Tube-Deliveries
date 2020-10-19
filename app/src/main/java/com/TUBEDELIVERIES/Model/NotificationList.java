@@ -1,9 +1,12 @@
 package com.TUBEDELIVERIES.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class NotificationList {
+public class NotificationList implements Parcelable {
 
     @SerializedName("title")
     @Expose
@@ -24,6 +27,27 @@ public class NotificationList {
     @Expose
     private String createdAt;
 
+
+    protected NotificationList(Parcel in) {
+        title = in.readString();
+        description = in.readString();
+        type = in.readString();
+        orderId = in.readString();
+        resId = in.readLong();
+        createdAt = in.readString();
+    }
+
+    public static final Creator<NotificationList> CREATOR = new Creator<NotificationList>() {
+        @Override
+        public NotificationList createFromParcel(Parcel in) {
+            return new NotificationList(in);
+        }
+
+        @Override
+        public NotificationList[] newArray(int size) {
+            return new NotificationList[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -71,5 +95,20 @@ public class NotificationList {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(type);
+        dest.writeString(orderId);
+        dest.writeLong(resId);
+        dest.writeString(createdAt);
     }
 }

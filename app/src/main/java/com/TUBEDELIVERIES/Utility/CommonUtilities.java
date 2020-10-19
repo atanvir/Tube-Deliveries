@@ -15,6 +15,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 
 import com.TUBEDELIVERIES.Activity.FilterActivity;
+import com.TUBEDELIVERIES.Model.CommonModel;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -35,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.TUBEDELIVERIES.Activity.EditMyProfileActivity;
 import com.TUBEDELIVERIES.Activity.LoginActivity;
@@ -46,10 +48,13 @@ import com.bumptech.glide.Glide;
 
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.Gson;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+import okhttp3.ResponseBody;
 
 import static android.view.View.GONE;
 
@@ -435,5 +440,10 @@ public class CommonUtilities {
         genderArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(genderArrayAdapter);
         spinner.performClick();
+    }
+
+    public static void errorResponse(Context context, ResponseBody errorBody) {
+        CommonModel responseModel=new Gson().fromJson(errorBody.charStream(),CommonModel.class);
+        Toast.makeText(context, ""+responseModel.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

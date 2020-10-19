@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#F6F6F6"
     app:layout_constraintEnd_toEndOf="parent"
